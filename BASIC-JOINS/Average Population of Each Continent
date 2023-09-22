@@ -1,0 +1,33 @@
+select country.continent, floor(avg(city.population))
+from city inner join country on city.countrycode = country.code
+group by country.continent
+
+
+/*
+
+select country.continent, city.population
+from city inner join country on city.countrycode = country.code
+
+Your Output (stdout)
+Asia 127800
+Europe 172701
+Oceania 125382 // same
+Oceania 109914 // same
+.
+.
+.
+
+So, I have to find the average population of a continent, which is equal to avg of all the cities population
+of a particular continent
+
+avg continent = avg (cities of continent)
+
+select country.continent, floor(avg(city.population))
+from city inner join country on city.countrycode = country.code
+group by country.continent
+
+we are grouping the data by continent name.
+we are then finding the avg of cities on city.code = country.code
+we are rounding down to floor value
+
+*/
