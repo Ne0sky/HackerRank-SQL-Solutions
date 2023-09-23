@@ -1,0 +1,22 @@
+select
+    submissions.hacker_id,
+    hackers.name
+from
+    submissions
+join
+    hackers on hackers.hacker_id = submissions.hacker_id
+join
+    challenges on challenges.challenge_id = submissions.challenge_id
+join
+    difficulty on difficulty.difficulty_level = challenges.difficulty_level
+    and submissions.score = difficulty.score
+    
+group by 
+    submissions.hacker_id,
+    hackers.name
+having
+    count(submissions.hacker_id)>1  /*Count Function only has one argument*/
+order by
+    count(submissions.hacker_id) DESC,
+    submissions.hacker_id asc ;
+    
